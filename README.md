@@ -2,7 +2,7 @@ COVID-19 API
 
 Open Source - COVID-19 API is developed to get the realtime data of the corona virus outbreaks worldwide
 
-End Point : https://covid19-webappsgodwin.herokuapp.com/countries/all
+API end point : https://covid19-api-godwin.herokuapp.com/countries/all
 
 Developer - Godwin L
 

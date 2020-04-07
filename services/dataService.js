@@ -9,7 +9,7 @@ exports.getData = (req, res) => {
         let all = await covid.getAll();
 
         let sortedCountries = await covid.getCountry({ sort: 'cases' });
-        sortedCountries.unshift({ Cases: `${all.cases}`, Deaths: `${all.deaths}`, Recovered: `${all.recovered}` });
+        sortedCountries.unshift({ Cases: `${all.cases}`, todayCases: `${all.todayCases}`, Deaths: `${all.deaths}`, todayDeaths: `${all.todayDeaths}`, Recovered: `${all.recovered}`, active: `${all.active}`, critical: `${all.critical}`, affectedCountries: `${all.affectedCountries}`, casesPerOneMillion: `${all.casesPerOneMillion}`, deathsPerOneMillion: `${all.deathsPerOneMillion}`, tests: `${all.tests}`, testsPerOneMillion: `${all.testsPerOneMillion}` });
         fs.writeFile("covid-19.json", JSON.stringify(sortedCountries), function(err) {
             if (err) {
                 console.log(err)

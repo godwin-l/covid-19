@@ -1,6 +1,6 @@
-COVID-19 API 1.0
+#COVID-19 API 1.0
 
-Open Source - COVID-19 API is built on nodejs to get the realtime data of the corona virus outbreaks worldwide
+COVID-19 API is a open source built on nodejs to track the realtime data of the corona virus outbreaks worldwide
 
 API end point : https://covid19-api-godwin.herokuapp.com/countries/all
 

@@ -10,7 +10,7 @@ var port = process.env.PORT || 80;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/countries', token);
+app.use('/v1', token);
 
 app.listen(port, () => {
     console.log("Listening on localhost")

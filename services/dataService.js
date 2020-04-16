@@ -1,33 +1,379 @@
 var express = require('express');
-const covid = require('novelcovid');
 const fs = require('fs');
+const { NovelCovid } = require('novelcovid');
 
-exports.getData = (req, res) => {
+const covid = new NovelCovid();
 
-    (async() => {
 
-        let all = await covid.getAll();
+exports.getCountries = (req, res) => {
 
-        let sortedCountries = await covid.getCountry({ sort: 'cases' });
-        sortedCountries.unshift({ Cases: `${all.cases}`, todayCases: `${all.todayCases}`, Deaths: `${all.deaths}`, todayDeaths: `${all.todayDeaths}`, Recovered: `${all.recovered}`, active: `${all.active}`, critical: `${all.critical}`, affectedCountries: `${all.affectedCountries}`, casesPerOneMillion: `${all.casesPerOneMillion}`, deathsPerOneMillion: `${all.deathsPerOneMillion}`, tests: `${all.tests}`, testsPerOneMillion: `${all.testsPerOneMillion}` });
-        fs.writeFile("covid-19.json", JSON.stringify(sortedCountries), function(err) {
-            if (err) {
-                console.log(err)
-                res.send({
-                    status: 'fail',
-                    data: {}
-                });
+    try {
+
+        country = req.query.country;
+        sort = req.query.sortby;
+
+        if (country != undefined && country != null && country != "") {
+            countryBy = true;
+        } else {
+            countryBy = false;
+        }
+
+        if (sort != undefined && sort != null && sort != "") {
+            sortBy = true;
+        } else {
+            sortBy = false;
+        }
+
+
+        (async() => {
+
+
+            if (countryBy && sortBy) {
+                sortedCountries = await covid.countries(country, sort);
+            } else if (!countryBy && sortBy) {
+                sortedCountries = await covid.countries(null, sort);
+            } else if (countryBy && !sortBy) {
+                sortedCountries = await covid.countries(country);
             } else {
-                res.send({
-                    status: 'success',
-                    code: 200,
-                    author: 'Godwin L(alloygodwin1@gmail.com | https://www.linkedin.com/in/godwin-l-027570154/ ) ',
-                    data: sortedCountries
-                });
+                sortedCountries = await covid.countries();
             }
 
+
+            fs.writeFile("countries.json", JSON.stringify(sortedCountries), function(err) {
+                if (err) {
+                    console.log(err)
+                    res.send({
+                        status: 'fail',
+                        data: {}
+                    });
+                } else {
+                    res.send({
+                        status: 'success',
+                        code: 200,
+                        author: 'Godwin L(alloygodwin1@gmail.com | https://www.linkedin.com/in/godwin-l-027570154/ ) ',
+                        data: sortedCountries
+                    });
+                }
+
+            });
+
+        })();
+
+    } catch (err) {
+
+        console.log(err);
+        res.send({
+            status: 'fail',
+            data: "Something went wrong, Kindly check the end point you are accessing."
         });
 
-    })();
+    }
+
+}
+
+
+exports.getYesterday = (req, res) => {
+
+
+    try {
+
+
+        country = req.query.country;
+        sort = req.query.sortby;
+
+        if (country != undefined && country != null && country != "") {
+            countryBy = true;
+        } else {
+            countryBy = false;
+        }
+
+        if (sort != undefined && sort != null && sort != "") {
+            sortBy = true;
+        } else {
+            sortBy = false;
+        }
+
+
+
+        (async() => {
+
+            if (countryBy && sortBy) {
+                sortedCountries = await covid.yesterday(country, sort);
+            } else if (!countryBy && sortBy) {
+                sortedCountries = await covid.yesterday(null, sort);
+            } else if (countryBy && !sortBy) {
+                sortedCountries = await covid.yesterday(country);
+            } else {
+                sortedCountries = await covid.yesterday();
+            }
+
+            fs.writeFile("yesterday.json", JSON.stringify(sortedCountries), function(err) {
+                if (err) {
+                    console.log(err)
+                    res.send({
+                        status: 'fail',
+                        data: {}
+                    });
+                } else {
+                    res.send({
+                        status: 'success',
+                        code: 200,
+                        author: 'Godwin L(alloygodwin1@gmail.com | https://www.linkedin.com/in/godwin-l-027570154/ ) ',
+                        data: sortedCountries
+                    });
+                }
+
+            });
+
+        })();
+
+    } catch (err) {
+
+        console.log(err);
+        res.send({
+            status: 'fail',
+            data: "Something went wrong, Kindly check the end point you are accessing."
+        });
+
+    }
+
+
+}
+
+
+exports.getAll = (req, res) => {
+
+
+
+    try {
+
+        (async() => {
+
+            let all = await covid.all();
+
+            fs.writeFile("all.json", JSON.stringify(all), function(err) {
+                if (err) {
+                    console.log(err)
+                    res.send({
+                        status: 'fail',
+                        data: {}
+                    });
+                } else {
+                    res.send({
+                        status: 'success',
+                        code: 200,
+                        author: 'Godwin L(alloygodwin1@gmail.com | https://www.linkedin.com/in/godwin-l-027570154/ ) ',
+                        data: all
+                    });
+                }
+
+            });
+
+        })();
+
+
+    } catch (err) {
+
+        console.log(err);
+        res.send({
+            status: 'fail',
+            data: "Something went wrong, Kindly check the end point you are accessing."
+        });
+
+    }
+
+}
+
+exports.getCountryNames = (req, res) => {
+
+
+    try {
+
+        (async() => {
+
+            let countryNames = await covid.countryNames();
+
+            fs.writeFile("countryNames.json", JSON.stringify(countryNames), function(err) {
+                if (err) {
+                    console.log(err)
+                    res.send({
+                        status: 'fail',
+                        data: {}
+                    });
+                } else {
+                    res.send({
+                        status: 'success',
+                        code: 200,
+                        author: 'Godwin L(alloygodwin1@gmail.com | https://www.linkedin.com/in/godwin-l-027570154/ ) ',
+                        data: countryNames
+                    });
+                }
+
+            });
+
+        })();
+
+
+    } catch (err) {
+
+        console.log(err);
+        res.send({
+            status: 'fail',
+            data: "Something went wrong, Kindly check the end point you are accessing."
+        });
+
+    }
+
+}
+
+exports.getStates = (req, res) => {
+
+
+    try {
+
+        (async() => {
+
+            let states = await covid.states();
+
+            fs.writeFile("states.json", JSON.stringify(states), function(err) {
+                if (err) {
+                    console.log(err)
+                    res.send({
+                        status: 'fail',
+                        data: {}
+                    });
+                } else {
+                    res.send({
+                        status: 'success',
+                        code: 200,
+                        author: 'Godwin L(alloygodwin1@gmail.com | https://www.linkedin.com/in/godwin-l-027570154/ ) ',
+                        data: states
+                    });
+                }
+
+            });
+
+        })();
+
+
+    } catch (err) {
+
+        console.log(err);
+        res.send({
+            status: 'fail',
+            data: "Something went wrong, Kindly check the end point you are accessing."
+        });
+
+    }
+
+}
+
+
+exports.getHistorical = (req, res) => {
+
+    try {
+
+        country = req.query.country;
+        province = req.query.province;
+
+        if (country != undefined && country != null && country != "") {
+            countryBy = true;
+        } else {
+            countryBy = false;
+        }
+
+        if (province != undefined && province != null && province != "") {
+            provinceBy = true;
+        } else {
+            provinceBy = false;
+        }
+
+
+        (async() => {
+
+
+            if (countryBy && provinceBy) {
+                sortedCountries = await covid.historical(null, country, province);
+            } else if (!countryBy && provinceBy) {
+                sortedCountries = await covid.historical(null, province);
+            } else if (countryBy && !provinceBy) {
+                sortedCountries = await covid.historical(null, country);
+            } else {
+                sortedCountries = await covid.historical();
+            }
+
+
+            fs.writeFile("historical.json", JSON.stringify(sortedCountries), function(err) {
+                if (err) {
+                    console.log(err)
+                    res.send({
+                        status: 'fail',
+                        data: {}
+                    });
+                } else {
+                    res.send({
+                        status: 'success',
+                        code: 200,
+                        author: 'Godwin L(alloygodwin1@gmail.com | https://www.linkedin.com/in/godwin-l-027570154/ ) ',
+                        data: sortedCountries
+                    });
+                }
+
+            });
+
+        })();
+
+    } catch (err) {
+
+        console.log(err);
+        res.send({
+            status: 'fail',
+            data: "Something went wrong, Kindly check the end point you are accessing."
+        });
+
+    }
+
+}
+
+
+exports.getAllhistorical = (req, res) => {
+
+
+    try {
+
+        (async() => {
+
+            let allhistorical = await covid.historical(true);
+
+            fs.writeFile("allhistorical.json", JSON.stringify(states), function(err) {
+                if (err) {
+                    console.log(err)
+                    res.send({
+                        status: 'fail',
+                        data: {}
+                    });
+                } else {
+                    res.send({
+                        status: 'success',
+                        code: 200,
+                        author: 'Godwin L(alloygodwin1@gmail.com | https://www.linkedin.com/in/godwin-l-027570154/ ) ',
+                        data: allhistorical
+                    });
+                }
+
+            });
+
+        })();
+
+
+    } catch (err) {
+
+        console.log(err);
+        res.send({
+            status: 'fail',
+            data: "Something went wrong, Kindly check the end point you are accessing."
+        });
+
+    }
 
 }

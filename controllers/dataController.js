@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 var dataService = require('../services/dataService');
 
+router.get('/', function(req, res) {
+    dataService.getBase(req, res);
+})
+
 router.get('/all', function(req, res) {
     dataService.getAll(req, res);
 })

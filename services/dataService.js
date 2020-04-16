@@ -5,6 +5,25 @@ const { NovelCovid } = require('novelcovid');
 const covid = new NovelCovid();
 
 
+exports.getBase = (req, res) => {
+
+    try {
+
+        res.redirect('https://medium.com/@alloygodwin1/coronavirus-covid-19-sars-cov-2-tracker-api-v1-built-to-track-global-corona-virus-outbreak-1c9d7ef84755');
+
+    } catch (err) {
+
+        console.log(err);
+        res.send({
+            status: 'fail',
+            data: "Something went wrong, Kindly check the end point you are accessing."
+        });
+
+    }
+
+}
+
+
 exports.getCountries = (req, res) => {
 
     try {

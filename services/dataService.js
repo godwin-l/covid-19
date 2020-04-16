@@ -345,7 +345,7 @@ exports.getAllhistorical = (req, res) => {
 
             let allhistorical = await covid.historical(true);
 
-            fs.writeFile("allhistorical.json", JSON.stringify(states), function(err) {
+            fs.writeFile("allhistorical.json", JSON.stringify(allhistorical), function(err) {
                 if (err) {
                     console.log(err)
                     res.send({

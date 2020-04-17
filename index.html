@@ -1,0 +1,217 @@
+<html>
+
+<head>
+    <title>Coronavirus (COVID-19, SARS-CoV-2) tracker API v1 built to track global corona virus outbreak</title>
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: #151837;
+            width: 90%;
+            margin: 0 auto;
+            padding: 2em 0 6em;
+        }
+        
+        h1 {
+            font-size: 3em;
+            color: #fefefe;
+        }
+        
+        h3 {
+            color: #fefefe;
+        }
+        
+        .wrapper {
+            margin: 3em 0;
+        }
+        
+        a,
+        a:visited,
+        a:hover,
+        a:active {
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            position: relative;
+            transition: 0.5s color ease;
+            text-decoration: none;
+            color: #81b3d2;
+        }
+        
+        a:hover {
+            color: #d73444;
+        }
+        
+        a.before:before,
+        a.after:after {
+            content: "";
+            transition: 0.5s all ease;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            position: absolute;
+        }
+        
+        a.before:before {
+            top: -0.25em;
+        }
+        
+        a.after:after {
+            bottom: -0.25em;
+        }
+        
+        a.before:before,
+        a.after:after {
+            height: 5px;
+            height: 0.35rem;
+            width: 0;
+            background: #d73444;
+        }
+        
+        a.before:hover:before,
+        a.after:hover:after {
+            width: 100%;
+        }
+        
+        .square {
+            box-sizing: border-box;
+            margin-left: -0.4em;
+            position: relative;
+            font-size: 2vw;
+            overflow: hidden;
+        }
+        
+        .square a {
+            position: static;
+            padding: 0.2em 0.4em;
+        }
+        
+        .square:before,
+        .square:after {
+            content: "";
+            box-sizing: border-box;
+            transition: 0.25s all ease;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            position: absolute;
+            width: 5px;
+            width: 0.35rem;
+            height: 0;
+            background: #d73444;
+        }
+        
+        .square:before {
+            left: 0;
+            bottom: -0.2em;
+        }
+        
+        .square.individual:before {
+            transition-delay: 0.6s;
+        }
+        
+        .square:after {
+            right: 0;
+            top: -0.2em;
+        }
+        
+        .square.individual:after {
+            transition-delay: 0.2s;
+        }
+        
+        .square a:before {
+            left: 0;
+            transition: 0.25s all ease;
+        }
+        
+        .square a:after {
+            right: 0;
+            transition: 0.25s all ease;
+        }
+        
+        .square.individual a:after {
+            transition: 0.25s all ease 0.4s;
+        }
+        
+        .square:hover:before,
+        .square:hover:after {
+            height: calc(100% + 0.4em);
+        }
+        
+        .square:hover a:before,
+        .square:hover a:after {
+            width: 100%;
+        }
+    </style>
+    <script type="text/javascript">
+        var $zoho = $zoho || {};
+        $zoho.salesiq = $zoho.salesiq || {
+            widgetcode: '9a5a3103770e3c7b4dd166f3e4987a3049cba105c89dba9b0f7cd109fc876e02a81d6b547a35c109951d24f6be71d2d0',
+            values: {},
+            ready: function() {}
+        };
+        var d = document;
+        s = d.createElement('script');
+        s.type = 'text/javascript';
+        s.id = 'zsiqscript';
+        s.defer = true;
+        s.src = 'https://salesiq.zoho.in/widget';
+        t = d.getElementsByTagName('script')[0];
+        t.parentNode.insertBefore(s, t);
+        d.write('<div id=zsiqwidget></div>');
+    </script>
+</head>
+
+<body>
+
+    <h1 style="text-align: center;">COVID-19 tracker API v1</h1>
+
+
+
+    <div style="text-align: center;">
+
+        <div class="wrapper">
+            <span class="square individual">
+    <a class="before after" href="/v1" target="_blank">Documentation</a>
+  </span>
+        </div>
+
+        <div class="wrapper">
+            <span class="square individual">
+    <a class="before after" href="/v1/all" target="_blank">Global states</a>
+  </span>
+        </div>
+        <div class="wrapper">
+            <span class="square individual">
+    <a class="before after" href="/v1/countries" target="_blank">Country wise stats</a>
+  </span>
+        </div>
+        <div class="wrapper">
+            <span class="square individual">
+    <a class="before after" href="/v1/yesterday" target="_blank">Yesterday stats</a>
+  </span>
+        </div>
+        <div class="wrapper">
+            <span class="square individual">
+    <a class="before after" href="/v1/allhistorical" target="_blank">Global historical stats</a>
+  </span>
+        </div>
+        <div class="wrapper">
+            <span class="square individual">
+    <a class="before after" href="/v1/historical" target="_blank">Country wise historical stats</a>
+  </span>
+        </div>
+        <div class="wrapper">
+            <span class="square individual">
+    <a class="before after" href="/v1/states" target="_blank">State wise stats</a>
+  </span>
+        </div>
+        <div class="wrapper">
+            <span class="square individual">
+    <a class="before after" href="/v1/affectedcountries" target="_blank">Affected countries</a>
+  </span>
+        </div>
+
+
+    </div>
+    </div>
+</body>
+
+</html>

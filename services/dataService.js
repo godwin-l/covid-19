@@ -6,6 +6,8 @@ const covid = new NovelCovid();
 
 
 exports.getBase = (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Expose-Headers', 'access-control-allow-origin');
 
     try {
 
@@ -25,6 +27,8 @@ exports.getBase = (req, res) => {
 
 
 exports.getCountries = (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Expose-Headers', 'access-control-allow-origin');
 
     try {
 
@@ -92,6 +96,8 @@ exports.getCountries = (req, res) => {
 
 
 exports.getYesterday = (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Expose-Headers', 'access-control-allow-origin');
 
 
     try {
@@ -161,6 +167,8 @@ exports.getYesterday = (req, res) => {
 
 
 exports.getAll = (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Expose-Headers', 'access-control-allow-origin');
 
 
 
@@ -170,6 +178,7 @@ exports.getAll = (req, res) => {
 
             let all = await covid.all();
 
+
             fs.writeFile("all.json", JSON.stringify(all), function(err) {
                 if (err) {
                     console.log(err)
@@ -178,6 +187,7 @@ exports.getAll = (req, res) => {
                         data: {}
                     });
                 } else {
+
                     res.send({
                         status: 'success',
                         code: 200,
@@ -205,6 +215,8 @@ exports.getAll = (req, res) => {
 
 exports.getCountryNames = (req, res) => {
 
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Expose-Headers', 'access-control-allow-origin');
 
     try {
 
@@ -246,6 +258,8 @@ exports.getCountryNames = (req, res) => {
 }
 
 exports.getStates = (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Expose-Headers', 'access-control-allow-origin');
 
 
     try {
@@ -289,6 +303,8 @@ exports.getStates = (req, res) => {
 
 
 exports.getHistorical = (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Expose-Headers', 'access-control-allow-origin');
 
     try {
 
@@ -356,6 +372,8 @@ exports.getHistorical = (req, res) => {
 
 
 exports.getAllhistorical = (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Expose-Headers', 'access-control-allow-origin');
 
 
     try {

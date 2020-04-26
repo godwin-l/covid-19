@@ -1,5 +1,4 @@
 var express = require('express');
-const fs = require('fs');
 const axios = require('axios');
 const { NovelCovid } = require('novelcovid');
 
@@ -63,22 +62,11 @@ exports.getCountries = (req, res) => {
             }
 
 
-            fs.writeFile("countries.json", JSON.stringify(sortedCountries), function(err) {
-                if (err) {
-                    console.log(err)
-                    res.send({
-                        status: 'fail',
-                        data: {}
-                    });
-                } else {
-                    res.send({
-                        status: 'success',
-                        code: 200,
-                        author: 'Godwin L(alloygodwin1@gmail.com | https://www.linkedin.com/in/godwin-l-027570154/ ) ',
-                        data: sortedCountries
-                    });
-                }
-
+            res.send({
+                status: 'success',
+                code: 200,
+                author: 'Godwin L(alloygodwin1@gmail.com | https://www.linkedin.com/in/godwin-l-027570154/ ) ',
+                data: sortedCountries
             });
 
         })();
@@ -133,22 +121,11 @@ exports.getYesterday = (req, res) => {
                 sortedCountries = await covid.yesterday();
             }
 
-            fs.writeFile("yesterday.json", JSON.stringify(sortedCountries), function(err) {
-                if (err) {
-                    console.log(err)
-                    res.send({
-                        status: 'fail',
-                        data: {}
-                    });
-                } else {
-                    res.send({
-                        status: 'success',
-                        code: 200,
-                        author: 'Godwin L(alloygodwin1@gmail.com | https://www.linkedin.com/in/godwin-l-027570154/ ) ',
-                        data: sortedCountries
-                    });
-                }
-
+            res.send({
+                status: 'success',
+                code: 200,
+                author: 'Godwin L(alloygodwin1@gmail.com | https://www.linkedin.com/in/godwin-l-027570154/ ) ',
+                data: sortedCountries
             });
 
         })();
@@ -180,23 +157,11 @@ exports.getAll = (req, res) => {
             let all = await covid.all();
 
 
-            fs.writeFile("all.json", JSON.stringify(all), function(err) {
-                if (err) {
-                    console.log(err)
-                    res.send({
-                        status: 'fail',
-                        data: {}
-                    });
-                } else {
-
-                    res.send({
-                        status: 'success',
-                        code: 200,
-                        author: 'Godwin L(alloygodwin1@gmail.com | https://www.linkedin.com/in/godwin-l-027570154/ ) ',
-                        data: all
-                    });
-                }
-
+            res.send({
+                status: 'success',
+                code: 200,
+                author: 'Godwin L(alloygodwin1@gmail.com | https://www.linkedin.com/in/godwin-l-027570154/ ) ',
+                data: all
             });
 
         })();
@@ -225,22 +190,11 @@ exports.getCountryNames = (req, res) => {
 
             let countryNames = await covid.countryNames();
 
-            fs.writeFile("countryNames.json", JSON.stringify(countryNames), function(err) {
-                if (err) {
-                    console.log(err)
-                    res.send({
-                        status: 'fail',
-                        data: {}
-                    });
-                } else {
-                    res.send({
-                        status: 'success',
-                        code: 200,
-                        author: 'Godwin L(alloygodwin1@gmail.com | https://www.linkedin.com/in/godwin-l-027570154/ ) ',
-                        data: countryNames
-                    });
-                }
-
+            res.send({
+                status: 'success',
+                code: 200,
+                author: 'Godwin L(alloygodwin1@gmail.com | https://www.linkedin.com/in/godwin-l-027570154/ ) ',
+                data: countryNames
             });
 
         })();
@@ -269,22 +223,11 @@ exports.getStates = (req, res) => {
 
             let states = await covid.states();
 
-            fs.writeFile("states.json", JSON.stringify(states), function(err) {
-                if (err) {
-                    console.log(err)
-                    res.send({
-                        status: 'fail',
-                        data: {}
-                    });
-                } else {
-                    res.send({
-                        status: 'success',
-                        code: 200,
-                        author: 'Godwin L(alloygodwin1@gmail.com | https://www.linkedin.com/in/godwin-l-027570154/ ) ',
-                        data: states
-                    });
-                }
-
+            res.send({
+                status: 'success',
+                code: 200,
+                author: 'Godwin L(alloygodwin1@gmail.com | https://www.linkedin.com/in/godwin-l-027570154/ ) ',
+                data: states
             });
 
         })();
@@ -339,22 +282,11 @@ exports.getHistorical = (req, res) => {
             }
 
 
-            fs.writeFile("historical.json", JSON.stringify(sortedCountries), function(err) {
-                if (err) {
-                    console.log(err)
-                    res.send({
-                        status: 'fail',
-                        data: {}
-                    });
-                } else {
-                    res.send({
-                        status: 'success',
-                        code: 200,
-                        author: 'Godwin L(alloygodwin1@gmail.com | https://www.linkedin.com/in/godwin-l-027570154/ ) ',
-                        data: sortedCountries
-                    });
-                }
-
+            res.send({
+                status: 'success',
+                code: 200,
+                author: 'Godwin L(alloygodwin1@gmail.com | https://www.linkedin.com/in/godwin-l-027570154/ ) ',
+                data: sortedCountries
             });
 
         })();
@@ -383,22 +315,11 @@ exports.getAllhistorical = (req, res) => {
 
             let allhistorical = await covid.historical(true);
 
-            fs.writeFile("allhistorical.json", JSON.stringify(allhistorical), function(err) {
-                if (err) {
-                    console.log(err)
-                    res.send({
-                        status: 'fail',
-                        data: {}
-                    });
-                } else {
-                    res.send({
-                        status: 'success',
-                        code: 200,
-                        author: 'Godwin L(alloygodwin1@gmail.com | https://www.linkedin.com/in/godwin-l-027570154/ ) ',
-                        data: allhistorical
-                    });
-                }
-
+            res.send({
+                status: 'success',
+                code: 200,
+                author: 'Godwin L(alloygodwin1@gmail.com | https://www.linkedin.com/in/godwin-l-027570154/ ) ',
+                data: allhistorical
             });
 
         })();

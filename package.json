@@ -25,10 +25,12 @@
   },
   "homepage": "https://github.com/godwin-l/covid-19#readme",
   "dependencies": {
+    "axios": "^0.19.2",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "novelcovid": "^1.2.4",
     "path": "^0.12.7",
     "rest": "^2.0.0"
-  }
+  },
+  "devDependencies": {}
 }

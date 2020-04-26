@@ -1,5 +1,6 @@
 var express = require('express');
 const fs = require('fs');
+const axios = require('axios');
 const { NovelCovid } = require('novelcovid');
 
 const covid = new NovelCovid();
@@ -401,6 +402,199 @@ exports.getAllhistorical = (req, res) => {
             });
 
         })();
+
+
+    } catch (err) {
+
+        console.log(err);
+        res.send({
+            status: 'fail',
+            data: "Something went wrong, Kindly check the end point you are accessing."
+        });
+
+    }
+
+}
+
+
+exports.IndiaData = (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Expose-Headers', 'access-control-allow-origin');
+
+
+    try {
+
+
+        axios.get('https://api.covid19india.org/data.json')
+            .then(function(response) {
+                res.send({
+                    status: 'success',
+                    code: 200,
+                    author: 'Godwin L(alloygodwin1@gmail.com | https://www.linkedin.com/in/godwin-l-027570154/ ) ',
+                    data: response.data
+                });
+            })
+            .catch(function(error) {
+                console.log(error);
+                res.send({
+                    status: 'fail',
+                    data: {}
+                });
+            })
+
+
+    } catch (err) {
+
+        console.log(err);
+        res.send({
+            status: 'fail',
+            data: "Something went wrong, Kindly check the end point you are accessing."
+        });
+
+    }
+
+}
+
+
+exports.IndiaStateData = (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Expose-Headers', 'access-control-allow-origin');
+
+
+    try {
+
+
+        axios.get('https://api.covid19india.org/state_district_wise.json')
+            .then(function(response) {
+                res.send({
+                    status: 'success',
+                    code: 200,
+                    author: 'Godwin L(alloygodwin1@gmail.com | https://www.linkedin.com/in/godwin-l-027570154/ ) ',
+                    data: response.data
+                });
+            })
+            .catch(function(error) {
+                console.log(error);
+                res.send({
+                    status: 'fail',
+                    data: {}
+                });
+            })
+
+
+    } catch (err) {
+
+        console.log(err);
+        res.send({
+            status: 'fail',
+            data: "Something went wrong, Kindly check the end point you are accessing."
+        });
+
+    }
+
+}
+
+exports.IndiaUpdatesData = (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Expose-Headers', 'access-control-allow-origin');
+
+
+    try {
+
+
+        axios.get('https://api.covid19india.org/updatelog/log.json')
+            .then(function(response) {
+                res.send({
+                    status: 'success',
+                    code: 200,
+                    author: 'Godwin L(alloygodwin1@gmail.com | https://www.linkedin.com/in/godwin-l-027570154/ ) ',
+                    data: response.data
+                });
+            })
+            .catch(function(error) {
+                console.log(error);
+                res.send({
+                    status: 'fail',
+                    data: {}
+                });
+            })
+
+
+    } catch (err) {
+
+        console.log(err);
+        res.send({
+            status: 'fail',
+            data: "Something went wrong, Kindly check the end point you are accessing."
+        });
+
+    }
+
+}
+
+
+exports.IndiaStateTestData = (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Expose-Headers', 'access-control-allow-origin');
+
+
+    try {
+
+
+        axios.get('https://api.covid19india.org/state_test_data.json')
+            .then(function(response) {
+                res.send({
+                    status: 'success',
+                    code: 200,
+                    author: 'Godwin L(alloygodwin1@gmail.com | https://www.linkedin.com/in/godwin-l-027570154/ ) ',
+                    data: response.data
+                });
+            })
+            .catch(function(error) {
+                console.log(error);
+                res.send({
+                    status: 'fail',
+                    data: {}
+                });
+            })
+
+
+    } catch (err) {
+
+        console.log(err);
+        res.send({
+            status: 'fail',
+            data: "Something went wrong, Kindly check the end point you are accessing."
+        });
+
+    }
+
+}
+
+exports.IndiaStateDailyData = (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Expose-Headers', 'access-control-allow-origin');
+
+
+    try {
+
+
+        axios.get('https://api.covid19india.org/states_daily.json')
+            .then(function(response) {
+                res.send({
+                    status: 'success',
+                    code: 200,
+                    author: 'Godwin L(alloygodwin1@gmail.com | https://www.linkedin.com/in/godwin-l-027570154/ ) ',
+                    data: response.data
+                });
+            })
+            .catch(function(error) {
+                console.log(error);
+                res.send({
+                    status: 'fail',
+                    data: {}
+                });
+            })
 
 
     } catch (err) {

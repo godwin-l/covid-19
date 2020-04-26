@@ -34,6 +34,30 @@ router.get('/affectedCountries', function(req, res) {
     dataService.getCountryNames(req, res);
 })
 
+router.get('/india', function(req, res) {
+    dataService.IndiaData(req, res);
+})
+
+router.get('/india/district', function(req, res) {
+    dataService.IndiaStateData(req, res);
+})
+
+router.get('/india/updates', function(req, res) {
+    dataService.IndiaUpdatesData(req, res);
+})
+
+router.get('/india/state_test_data', function(req, res) {
+    dataService.IndiaStateTestData(req, res);
+})
+
+router.get('/india/states_daily', function(req, res) {
+    dataService.IndiaStateDailyData(req, res);
+})
+
+
+
+
+
 
 
 
